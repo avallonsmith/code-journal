@@ -1,0 +1,16 @@
+.bg-color {
+  background-color: #562b81;
+  color: white;
+}
+
+body {
+  background-color: #f0f0f0;
+}
+
+.row {
+  display: flex;
+}
+
+.image {
+  width: 100%;
+}
