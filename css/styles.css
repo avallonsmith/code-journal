@@ -14,3 +14,33 @@ body {
 .image {
   width: 100%;
 }
+
+.button {
+  background-color: #562b81;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 5px 10px;
+  margin-left: 300px;
+  margin-top: 10px;
+}
+
+.labels {
+  margin-top: 10px;
+}
+
+.textbox {
+  border-color: 2px solid #ebebeb;
+  margin-bottom: 8px;
+  margin-left: 1px;
+  padding-bottom: 10px;
+  width: 100%;
+
+  /*  font-family: "open-sans", sans-serif;
+}
+
+* {
+  font-family: "proza-libra", sans-serif;
+}
+*/
+}

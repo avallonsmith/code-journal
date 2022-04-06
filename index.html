@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Journal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap" rel="stylesheet">
   <link rel="icon" href="images/favicon.ico">
   <link
     rel="stylesheet"
@@ -37,22 +39,27 @@
             <img class="image" src="images/placeholder-image-square.jpg" alt="placeholder">
           </div>
           <div class="column-full column-half">
-            <label for="title"><strong>Title</strong></label>
+            <label class="labels" for="title"><strong>Title</strong></label>
             <div class="row">
               <input class="textbox" id="title" name="title" type="text" required>
             </div>
-            <label for="photoUrl"><strong>Photo URL</strong></label>
+            <label class="labels" for="photoUrl"><strong>Photo URL</strong></label>
             <div class="row">
-              <input class="textbox" id="photoUrl" name="photoUrl" type="text" required>
+              <input class="textbox photoUrlBox" id="photoUrl" name="photoUrl" type="text" required>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="column-full">
-            <label for="notes"><strong>Notes</strong></label>
+            <label class="labels" for="notes"><strong>Notes</strong></label>
             <div class="row">
-              <textarea class="notebox" id="notes" name="notes" rows="6" required></textarea>
+              <textarea class="textbox" id="notes" name="notes" rows="8" required></textarea>
             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full">
+            <input class="button" type="button" value="SAVE">
           </div>
         </div>
       </div>
