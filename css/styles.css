@@ -1,3 +1,7 @@
+* {
+  font-family: "Proza Libre", sans-serif;
+}
+
 .bg-color {
   background-color: #562b81;
   color: white;
@@ -13,34 +17,44 @@ body {
 
 .image {
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .button {
   background-color: #562b81;
   color: white;
   border: none;
-  border-radius: 2px;
-  padding: 5px 10px;
-  margin-left: 300px;
-  margin-top: 10px;
+  border-radius: 3px;
+  padding: 5px;
+  width: 60px;
 }
 
-.labels {
-  margin-top: 10px;
+.move-button {
+  display: flex;
+  justify-content: right;
+}
+
+textarea {
+  margin-top: 5px;
+}
+
+input textarea {
+  margin-top: 5px;
+  font-family: "Open Sans", sans-serif;
 }
 
 .textbox {
-  border-color: 2px solid #ebebeb;
+  border: 2px solid lightgray;
   margin-bottom: 8px;
   margin-left: 1px;
   padding-bottom: 10px;
   width: 100%;
-
-  /*  font-family: "open-sans", sans-serif;
 }
 
-* {
-  font-family: "proza-libra", sans-serif;
+input:hover {
+  outline-color: #562b81;
 }
-*/
+
+textarea:hover {
+  outline-color: #562b81;
 }
