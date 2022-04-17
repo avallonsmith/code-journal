@@ -16,7 +16,7 @@ body {
 }
 
 .image {
-  width: 100%;
+  max-width: 100%;
   margin-bottom: 10px;
 }
 
@@ -28,6 +28,10 @@ body {
   padding: 5px;
   width: 60px;
   height: 33px;
+}
+
+.button:hover {
+  cursor: pointer;
 }
 
 .move-button {
@@ -66,12 +70,12 @@ textarea:hover {
 }
 
 .image2 {
-  width: 400px;
-  height: 400px;
+  max-width: 100%;
 }
 
 ul {
   list-style: none;
+  padding: 0;
 }
 
 .button2 {
@@ -83,8 +87,21 @@ ul {
   width: 60px;
   height: 33px;
   margin-top: 30px;
+  text-decoration: none;
+  text-align: center;
 }
 
-.padding {
-  padding-left: 40px;
+.button2:hover {
+  cursor: pointer;
+}
+
+.color-and-move {
+  color: white;
+  text-decoration: none;
+  font-size: larger;
+}
+
+.navigation h2 {
+  display: inline-block;
+  margin-right: 1rem;
 }

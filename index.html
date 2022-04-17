@@ -20,15 +20,16 @@
   <header class="bg-color">
     <div class="container">
       <div class="row">
-        <div class="column-full">
-          <h2>Code Journal</h2>
+        <div class="column-full navigation">
+          <h2 class="">Code Journal</h2>
+          <a class="color-and-move" href="#" data-view="entries">Entries</a>
         </div>
       </div>
     </div>
   </header>
   <main>
     <div class="container">
-      <div data-view="entry-form">
+      <div class="hidden" data-view="entry-form">
         <form id="entry-form">
           <div class="row">
             <div class="column-full">
@@ -65,27 +66,16 @@
           </div>
         </form>
       </div>
-      <div data-view="entires">
+      <div data-view="entries">
         <div class="row">
           <div class="column-full move-button2">
             <h1>Entries</h1>
-            <button class="button2">NEW</button>
+            <a href="#" class="button2" data-view="entry-form">NEW</a>
           </div>
         </div>
         <div class="row">
           <div class="column-full">
-            <ul>
-              <li>
-                <div class="row">
-                  <div class="column-full column-half">
-                    <img class="image2" id="img-preview2" src="images/placeholder-image-square.jpg" alt="placeholder">
-                  </div>
-                  <div class="column-full column-half padding">
-                    <h3>Ada Lovelace</h3>
-                    <p>She's pretty cool.</p>
-                  </div>
-                </div>
-              </li>
+            <ul id="entries-list">
             </ul>
           </div>
         </div>
