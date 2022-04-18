@@ -67,6 +67,7 @@ function journalEntries(entry) {
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {
+  showView(data.view);
   for (var i = 0; i < data.entries.length; i++) {
     var makeEntires = journalEntries(data.entries[i]);
     $ul.appendChild(makeEntires);
@@ -74,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 });
 
 function showView(view) {
+  data.view = view;
   var views = document.querySelectorAll('div[data-view]');
   for (var i = 0; i < views.length; i++) {
     if (views[i].getAttribute('data-view') === view) {
