@@ -16,7 +16,7 @@ body {
 }
 
 .image {
-  width: 100%;
+  max-width: 100%;
   margin-bottom: 10px;
 }
 
@@ -27,6 +27,11 @@ body {
   border-radius: 3px;
   padding: 5px;
   width: 60px;
+  height: 33px;
+}
+
+.button:hover {
+  cursor: pointer;
 }
 
 .move-button {
@@ -57,4 +62,46 @@ input:hover {
 
 textarea:hover {
   outline-color: #562b81;
+}
+
+.move-button2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.image2 {
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.button2 {
+  background-color: #562b81;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  width: 60px;
+  height: 33px;
+  margin-top: 30px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.button2:hover {
+  cursor: pointer;
+}
+
+.color-and-move {
+  color: white;
+  text-decoration: none;
+  font-size: larger;
+}
+
+.navigation h2 {
+  display: inline-block;
+  margin-right: 1rem;
 }
