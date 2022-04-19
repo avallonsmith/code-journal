@@ -12,6 +12,7 @@ if (entriesJSON !== null) {
   data = JSON.parse(entriesJSON);
 }
 function stringy(event) {
+  data.editing = null;
   var dataArray = JSON.stringify(data);
   localStorage.setItem('javascript-local-storage', dataArray);
 }
