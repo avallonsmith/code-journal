@@ -105,3 +105,14 @@ ul {
   display: inline-block;
   margin-right: 1rem;
 }
+
+.space {
+  color: #562b81;
+  margin-top: 15px;
+  font-size: large;
+}
+
+.edit-display {
+  display: flex;
+  justify-content: space-between;
+}

@@ -4,8 +4,10 @@ var $imgPreview = document.querySelector('#img-preview');
 var $submit = document.querySelector('#entry-form');
 var $photoURL = document.querySelector('.photoUrlBox');
 var $ul = document.querySelector('#entries-list');
+var $formTitle = document.querySelector('#form-title');
 $photoURL.addEventListener('input', photoInput);
 $submit.addEventListener('submit', submitFunction);
+$ul.addEventListener('click', handleEditClick);
 document.addEventListener('click', handleViewChange);
 
 function photoInput(event) {
@@ -21,20 +23,34 @@ function submitFunction(event) {
   var formObjects = {
     title: title,
     url: photoUrl,
-    notes: notes,
-    id: data.nextEntryId
+    notes: notes
   };
-  data.nextEntryId++;
-  data.entries.unshift(formObjects);
+  if (data.editing === null) {
+    formObjects.id = data.nextEntryId;
+    data.nextEntryId++;
+    data.entries.unshift(formObjects);
+    var $entry = journalEntries(formObjects);
+    $ul.prepend($entry);
+  } else {
+    formObjects.id = data.editing.id;
+    clearElement($ul);
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].id === formObjects.id) {
+        data.entries[i] = formObjects;
+      }
+      var entry = journalEntries(data.entries[i]);
+      $ul.appendChild(entry);
+    }
+    data.editing = null;
+  }
   $submit.reset();
   $imgPreview.setAttribute('src', 'images/placeholder-image-square.jpg');
-  var $entry = journalEntries(formObjects);
-  $ul.prepend($entry);
   showView('entries');
 }
 
 function journalEntries(entry) {
   var $li = document.createElement('li');
+  $li.setAttribute('data-li-id', entry.id);
 
   var $div1 = document.createElement('div');
   $div1.setAttribute('class', 'row');
@@ -56,11 +72,19 @@ function journalEntries(entry) {
   var $p = document.createElement('p');
   $p.textContent = entry.notes;
 
+  var $iconDiv = document.createElement('div');
+  $iconDiv.setAttribute('class', 'edit-display');
+
+  var $icon = document.createElement('i');
+  $icon.setAttribute('class', 'fas fa-pen space');
+
   $li.appendChild($div1);
   $div1.appendChild($div2);
   $div2.appendChild($img2);
   $div1.appendChild($div3);
-  $div3.appendChild($h3);
+  $div3.appendChild($iconDiv);
+  $iconDiv.appendChild($h3);
+  $iconDiv.appendChild($icon);
   $div3.appendChild($p);
 
   return $li;
@@ -76,6 +100,17 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
 function showView(view) {
   data.view = view;
+  if (view === 'entries') {
+    data.editing = null;
+    $submit.reset();
+    $imgPreview.setAttribute('src', 'images/placeholder-image-square.jpg');
+  } else if (view === 'entry-form') {
+    if (data.editing === null) {
+      $formTitle.textContent = 'New Entry';
+    } else {
+      $formTitle.textContent = 'Edit Entry';
+    }
+  }
   var views = document.querySelectorAll('div[data-view]');
   for (var i = 0; i < views.length; i++) {
     if (views[i].getAttribute('data-view') === view) {
@@ -90,4 +125,27 @@ function handleViewChange(event) {
   if (event.target.tagName !== 'A') return;
   var view = event.target.getAttribute('data-view');
   showView(view);
+}
+
+function handleEditClick(event) {
+  if (event.target.tagName !== 'I') return;
+  var $li = event.target.closest('li');
+  var id = parseInt($li.getAttribute('data-li-id'));
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].id === id) {
+      data.editing = data.entries[i];
+      break;
+    }
+  }
+  $submit.title.value = data.editing.title;
+  $submit.photoUrl.value = data.editing.url;
+  $submit.notes.value = data.editing.notes;
+  $imgPreview.setAttribute('src', data.editing.url);
+  showView('entry-form');
+}
+
+function clearElement(element) {
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
 }
