@@ -5,6 +5,11 @@ var $submit = document.querySelector('#entry-form');
 var $photoURL = document.querySelector('.photoUrlBox');
 var $ul = document.querySelector('#entries-list');
 var $formTitle = document.querySelector('#form-title');
+var $deleteButton = document.querySelector('.delete');
+var $footerButtons = document.querySelector('#footer-buttons');
+var $modalBackground = document.querySelector('.modal-background');
+var $cancelButton = document.querySelector('.cancel-button');
+var $confirmButton = document.querySelector('.confirm-button');
 $photoURL.addEventListener('input', photoInput);
 $submit.addEventListener('submit', submitFunction);
 $ul.addEventListener('click', handleEditClick);
@@ -107,8 +112,14 @@ function showView(view) {
   } else if (view === 'entry-form') {
     if (data.editing === null) {
       $formTitle.textContent = 'New Entry';
+      $deleteButton.classList.add('hidden');
+      $footerButtons.classList.add('flex-end');
+      $footerButtons.classList.remove('space-between');
     } else {
       $formTitle.textContent = 'Edit Entry';
+      $deleteButton.classList.remove('hidden');
+      $footerButtons.classList.remove('flex-end');
+      $footerButtons.classList.add('space-between');
     }
   }
   var views = document.querySelectorAll('div[data-view]');
@@ -149,3 +160,45 @@ function clearElement(element) {
     element.removeChild(element.firstChild);
   }
 }
+
+function showModal(event) {
+  event.stopPropagation();
+  if (event.target === $deleteButton) {
+    $modalBackground.classList.remove('hidden');
+    showView('entry-form');
+  } else {
+    $modalBackground.classList.add('hidden');
+    showView('entry-form');
+  }
+}
+$deleteButton.addEventListener('click', showModal);
+
+function cancelModal(event) {
+  event.stopPropagation();
+  if (event.target === $cancelButton) {
+    $modalBackground.classList.add('hidden');
+  }
+}
+$cancelButton.addEventListener('click', cancelModal);
+
+function confirmModal(event) {
+  if (event.target === $confirmButton) {
+    $modalBackground.className = 'modal-background hidden';
+  } else {
+    $modalBackground.className = 'modal-background';
+  }
+}
+$confirmButton.addEventListener('click', confirmModal);
+
+$confirmButton.addEventListener('click', function (event) {
+  var liSelector = 'li[data-li-id="' + data.editing.id + '"]';
+  var $liElement = document.querySelector(liSelector);
+  $liElement.remove();
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === data.editing.entryId) {
+      data.entries.splice(i, 1);
+    }
+  }
+  showView('entries');
+  $modalBackground.classList.add('hidden');
+});
