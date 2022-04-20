@@ -112,7 +112,79 @@ ul {
   font-size: large;
 }
 
+.space:hover {
+  cursor: pointer;
+}
+
 .edit-display {
   display: flex;
   justify-content: space-between;
+}
+
+.delete {
+  border: none;
+  color: #df4b4b;
+  text-decoration: underline;
+  font-size: large;
+}
+
+.delete:hover {
+  cursor: pointer;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.confirm-button {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  width: 80px;
+  height: 33px;
+}
+
+.cancel-button {
+  background-color: #b6b6b6;
+  color: black;
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  width: 80px;
+  height: 33px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.modal {
+  background-color: #fff;
+  width: 310px;
+  height: 120px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.modal-background {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
